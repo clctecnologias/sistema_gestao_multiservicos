@@ -1,35 +1,38 @@
 <?php
 
-namespace App\Livewire\Adm;
+namespace App\Livewire\Customer;
+
+use App\Models\PersonalData;
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
-use App\Models\{PersonalData};
 use Livewire\Component;
 use Throwable;
 
-class FixedTopBar extends Component
+class FixedTopBarComponent extends Component
 {
+    public $authenticated_username;   
     protected $listeners = ['confirmLogout'];
-    public function render()
-    {
-        return view('livewire.adm.fixed-top-bar',[
-             'user' =>$this->getAuthUserInfo()
-        ]);
-    }
-
-     public function getAuthUserInfo () {
+    
+    public function mount () {
         try {
-           return PersonalData::where('employee_uuid', auth()->user()->employee_uuid)->first();
-        } catch (\Throwable $th) {
-           LivewireAlert::title('Erro')
-            ->text('erro: ' .$th->getMessage())
-            ->error()
-            ->withConfirmButton()
-            ->confirmButtonText('Fechar')
-            ->show();
-        }     
+            //code...
+            $this->authenticated_username = PersonalData::query()->where('customer_uuid', auth()->user()->customer_uuid)
+            ->pluck('fullname')
+            ->first();
+        } catch (Throwable $th) {
+          LivewireAlert::title('Erro')
+                ->text('erro: ' .$th->getMessage())
+                ->error()
+                ->withConfirmButton()
+                ->confirmButtonText('Fechar')
+                ->show();
+        }
+    }
+        public function render()
+    {
+        return view('livewire.customer.fixed-top-bar-component');
     }
 
-     public function logout () {
+      public function logout () {
             try {
                 LivewireAlert::title('Atenção')
             ->text('Deseja realmente, terminar sessão?')
@@ -43,7 +46,7 @@ class FixedTopBar extends Component
             ->onConfirm('confirmLogout')
             ->show();
 
-            } catch (\Throwable $th) {
+            } catch (Throwable $th) {
             LivewireAlert::title('Erro')
                 ->text('erro: ' .$th->getMessage())
                 ->error()

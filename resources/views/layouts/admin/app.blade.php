@@ -20,7 +20,7 @@
     <script src="{{ asset('dashboard/js/font-awesome-v6.js') }}" crossorigin="anonymous"></script>
     <script src="{{ asset('dashboard/js/vendor.bundle.base.js') }}" ></script>
     <script src="{{ asset('dashboard/js/scripts.js') }}"></script>
-
     @stack('dashboard-home')
+
 </body>
 </html>

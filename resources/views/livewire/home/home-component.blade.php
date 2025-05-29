@@ -13,8 +13,7 @@
         </nav>
         <nav class="z-1">
             <a href="{{ route('home_page.multiservice.site') }}"><img src="{{ asset('home/img/logo.png') }}" alt="imagem da logo do multisserviços" srcset="{{ asset('home/img/logo.png') }}" class="w-[120px]"></a>
-
-            <!-- Usei o index.html como href para atualizar o site offline  -->
+          
         </nav>
         <nav class="hidden md:block">
             <nav class="navBotoes">
@@ -114,7 +113,7 @@
                 <button class="carousel-button next" aria-label="Próximo">&#10095;</button>
                 
             </div>
-            <!-- fim -->
+        
             <div class="flex items-center w-full flex-col my-2">
                 <button class="botao botaoPrimario">Eletrificando Angola</button>
             </div>
@@ -255,8 +254,6 @@
             </div>
         </footer>
     </main>
-
-
 
 
 </div>

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth">
+<html lang="pt-pt" class="scroll-smooth">
 <head>
     <meta charset="utf-8">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta property="og:type" content="website">
     <meta name="theme-color" content="#40E194">
     <meta name="robots" content="index, follow">
@@ -17,10 +16,18 @@
     <meta property="og:title" content="Centro Multisserviços - Prestação de Serviços de Instalação e Manutenção Elétrica">
     <meta property="og:description" content="Centro Multisserviços - Prestação de Serviços de Instalação e Manutenção Elétrica na Sapú II e Vila Flor">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
+    {{-- Livewire CSS --}}
+    @livewireStyles
 </head>
 <body>
-{{$slot}}
-<script src='{{ asset('global/js/sweetalert.js') }}'></script>
-<script src="{{ asset('home/js/script.js') }}"></script> -
+
+    {{ $slot }}
+
+    <script src='{{ asset('global/js/sweetalert.js') }}'></script>
+    <script src="{{ asset('home/js/script.js') }}"></script> 
+
+    {{-- Livewire JS --}}
+    @livewireScripts
 </body>
 </html>

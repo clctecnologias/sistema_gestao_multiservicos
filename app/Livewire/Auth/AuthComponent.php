@@ -7,35 +7,34 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
-use \Illuminate\Http\Request;
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 
 class AuthComponent extends Component
 {
+    #[Layout('layouts.home.app')]
 
     public $user_tb,$role_tb,$request,$email,$password,$user,$admin,$role,$credentials = [],$phone_number,$availableRoles,$employee,$enterprise_tb;
 
-    public function mount (Enterprise $enterprise_tb, User $user_tb,Role $role_tb,Request $request) {
+    public function mount (Enterprise $enterprise_tb, User $user_tb,Role $role_tb) {
         $this->enterprise_tb = $enterprise_tb;
         $this->user_tb = $user_tb;
         $this->role_tb = $role_tb;
-        $this->verifyIfAlreadySuperAdmin();
         $this->verifyIfAlreadyHaveOneAdminUser();
         $this->verifyAllAvailableRoles();
         $this->verifyIfAlreadyHaveEnterpriseData();
     }
     public function render()
     {
-        return view('livewire.auth.auth-component')->layout('layouts.home.app');
+        return view('livewire.auth.auth-component');
     }
 
     
-     public function authenticate_user () {
-
+     public function authenticate () {      
       $this->validate();
      try {
             
-         if (auth()->attempt( ["email" =>$this->email,"password" =>$this->password])) {             
+         if (auth()->attempt( ["email" =>$this->email, "password" =>$this->password])) {             
                 if (auth()->user()->role->role_type === 'customer') {
                     return redirect()->route('dashboard.customer.home');
                  }else if (auth()->user()->role->role_type === 'admin') {
@@ -106,8 +105,8 @@ class AuthComponent extends Component
 
     public function verifyAllAvailableRoles () {
         try {
-            $this->availableRoles = Role::query()->get();
-            if ($this->availableRoles->count() < 5 ) {
+            $this->availableRoles = Role::query()->whereIn('role_type', ['customer', 'employee'])->get();
+            if (!$this->availableRoles) {
                 $roleTypes = [1 => 'customer',2 => 'employee'];
 
                 for ($i=1; $i < 3; $i++) {
@@ -152,28 +151,6 @@ class AuthComponent extends Component
         }
     }
 
-    public function verifyIfAlreadySuperAdmin () {
-        try {
-           $s_admin = $this->role_tb::query()->where('role_type', 's_admin')->first();
-            if (!$s_admin) {
-               DB::beginTransaction();
-               $s_role = $this->role_tb::query()->create([
-                'role_type' =>'s_admin'
-                ]);
-                DB::commit();
-            }
-
-        } catch (Exception $ex) {
-            DB::rollBack();
-              LivewireAlert::title('Erro')
-            ->text('erro: ' .$ex->getMessage())
-            ->error()
-            ->withConfirmButton()
-            ->confirmButtonText('Fechar')
-            ->timer(0)
-            ->show();
-        }
-    }
 
     public function rules () {
         return [

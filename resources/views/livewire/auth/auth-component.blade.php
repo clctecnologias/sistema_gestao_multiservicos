@@ -13,7 +13,7 @@
                         <p class="font-roboto text-[#B0B0B0] font-bold text-[10pt] text-center md:text-left">Eletrifique connosco.</p>
                         <p class="pt-2.5 text-white font-inter font-extralight md:text-left text-center">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos neque modi quidem tempore, ratione odit voluptas nostrum omnis eius provident recusandae necessitatibus nobis veritatis corrupti repellendus aperiam fugit praesentium quia.</p>
 
-                     <form wire:submit='authenticate_user'>
+                    
                         <div class="contentNavInputs">
                             <nav class="navInputs mt-3 md:mt-auto">
                                 <input wire:model='email' type="text" placeholder="" id="emailSessao" >
@@ -31,7 +31,7 @@
                             <nav class="navBotoes">
                                 <a href="/"><button type="button" class="botao">Cancelar</button></a>
                                 <button
-                                    type='submit'
+                                    wire:click='authenticate'
                                     class="botao botaoPrimario">
                                     Iniciar Sessão
                                 </button>
@@ -41,7 +41,7 @@
                                 <p class="text-[#B0B0B0] font-inter font-extralight pt-[4%]">&copy;2025 - <span class="textoColorido font-bold">Centro Multisserviços</span> - Todos os direitos reservados</p>
                             </nav>
                         </div>
-                    </form>
+                    
                 </div>
             </nav>
         </nav>

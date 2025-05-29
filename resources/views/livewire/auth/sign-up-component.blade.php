@@ -1,8 +1,5 @@
 
 @section('title', 'CentroMulticerviços - Criar conta')
-
-
-@section('title', 'CentroMulticerviços - Login')
 <div class="flex">
         <nav class="hidden md:block grayscale-100 hover:grayscale-0 ease-linear duration-500">
             <img src="{{ asset('/home/img/img_formulario.jpg') }}" alt="" srcset="" class="h-screen w-[55vw]">
