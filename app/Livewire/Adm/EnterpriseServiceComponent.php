@@ -165,7 +165,11 @@ class EnterpriseServiceComponent extends Component
     }
 
     public function update () {
-        $this->validate();
+        $this->validate(
+            ["service_name" =>"required", "service_price" =>"required"],
+            ["service_name.required" =>'Campo obrigatório*', "service_price.required" =>'Campo obrigatório*'
+            ]);
+
         try {
            DB::beginTransaction();
             $this->enterprise_service_tb::find($this->enterprise_service_uuid)->update([

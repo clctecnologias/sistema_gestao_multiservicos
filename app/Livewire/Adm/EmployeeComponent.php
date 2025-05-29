@@ -146,21 +146,6 @@ class EmployeeComponent extends Component
         }
     }
 
-    public function Fechar_modal () {
-        try {
-           $this->status = false;
-           $this->reset(['old_password','password','fullname','position','birthday','salary','phone_number', 'address','username','email']);
-           $this->resetValidation();
-        } catch (\Throwable $th) {
-        LivewireAlert::title('Erro')
-            ->text('erro: ' .$th->getMessage())
-            ->error()
-            ->withConfirmButton()
-            ->confirmButtonText('Fechar')
-            ->show();
-        }
-    }
-
     public function update (PersonalData $personal_data_tb, User $user_tb, Employee $employee_tb) {
         $this->validate([            
         'fullname' => 'required',
@@ -276,7 +261,7 @@ class EmployeeComponent extends Component
             ->withConfirmButton()
             ->confirmButtonText('Fechar')
             ->show();
-            $this->Fechar_modal();
+            $this->close_modal();
           }
           
 
@@ -339,17 +324,9 @@ class EmployeeComponent extends Component
 
     public function close_modal () {
         try {
-            $this->status = false;
-            $this->reset([
-                'fullname',
-                'address',
-                'birthday',
-                'phone_number',
-                'username',
-                'email',
-                'password',
-            ]);
-            $this->resetValidation();
+            $this->status = false;      
+           $this->reset(['old_password','password','fullname','position','birthday','salary','phone_number', 'address','username','email']);
+           $this->resetValidation();
         } catch (\Throwable $ex) {
          LivewireAlert::title('Erro')
             ->text('erro: ' .$ex->getMessage())

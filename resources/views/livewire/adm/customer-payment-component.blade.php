@@ -27,32 +27,36 @@
                                             <tr>
                                                 <th>Data de pagamento</th>
                                                 <th>Nome do cliente</th>       
-                                                <th>Valor pago</th>   
-                                                <th class="text-end">Opções</th>
+                                                <th>Serviço pago</th>   
+                                                <th>Valor pago</th>                                                  
                                             </tr>
                                         </thead>
 
                                         <tbody>
-                                            @if (isset($roles) and $roles->count() > 0)
-                                                @foreach ($roles as $role)
+                                            @if (isset($customer_paid_services) and $customer_paid_services->count() > 0)
+                                                @foreach ($customer_paid_services as $service)
                                                             <tr>  
-                                                                <td>{{$role->created_at ?? ''}}</td>     
-                                                                                                                          
-                                                                 <td>
+                                                                <td>{{$service->payment_created_at ?? ''}}</td>     
+                                                                <td>{{$service->fullname ?? ''}}</td>   
+                                                                <td>{{$service->enterprise_service->service_name ?? ''}}</td>   
+                                                                <td>{{$service->enterprise_service->service_price ?? ''}}</td>   
+                                                                 <td class="d-none">
                                                                     <div class='d-flex gap-1 align-items-center justify-content-end'>                                                                  
 
-                                                                        <button                                                                             
-                                                                            wire:click="edit('{{ $role->uuid }}')"
+                                                                        <button  
+                                                                            
+                                                                            wire:click="edit('{{ $service->uuid }}')"
                                                                             data-bs-target='#form_role' 
                                                                             data-bs-toggle='modal'
-                                                                            class='btn btn-primary btn-sm'>
+                                                                            class='d-none btn btn-primary btn-sm'>
                                                                             <i class='fa fa-print'></i>
                                                                         </button>                                                                    
                                                                         
                                                                       
                                                                             <button 
-                                                                                wire:click="delete('{{ $role->uuid }}')"
-                                                                                class='btn btn-danger btn-sm'>
+                                                                               
+                                                                                wire:click="delete('{{ $service->uuid }}')"
+                                                                                class='d-none btn btn-danger btn-sm'>
                                                                                 <i class='fa fa-trash-alt'></i>
                                                                         </button>           
 

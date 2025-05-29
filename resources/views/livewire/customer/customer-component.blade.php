@@ -1,6 +1,6 @@
 <div id="app">
     @section('title','Dashboard cliente | Início')
-      <div class="loader"></div>
+       <x-customer.loader />
       <div class="main-wrapper main-wrapper-1">
             <div class="navbar-bg"></div>
             <livewire:customer.fixed-top-bar-component />
@@ -8,7 +8,7 @@
                   <div class="main-content">
 
                     <section class="section">                    
-                        <x-customer.stats /> 
+                        <x-customer.stats :paymentCounter="$paymentCounter" /> 
                         <livewire:customer.available-enterprise-service-component  />     
                     </section>
                     <x-customer.settings-side-bar />               

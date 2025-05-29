@@ -42,7 +42,7 @@
                     <span class="time">2 Min Ago</span>
                   </span>
                 </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="assets/img/users/user-2.png" class="rounded-circle">
+                    <img alt="image" src="{{ asset('customer/img/users/user-2.png') }}" class="rounded-circle">
                   </span> <span class="dropdown-item-desc"> <span class="message-user">Sarah
                       Smith</span> <span class="time messege-text">Request for leave
                       application</span>
@@ -140,13 +140,13 @@
                 class="user-img-radious-style"> <span class="d-sm-none d-lg-inline-block"></span></a>
             <div class="dropdown-menu dropdown-menu-right pullDown">
               <div class="dropdown-title">Olá {{auth()->check() ? $authenticated_username : ''}}</div>
-              <a href="profile.html" class="dropdown-item has-icon"> <i class="far
+              {{-- <a href="profile.html" class="dropdown-item has-icon"> <i class="far
 										fa-user"></i> Profile
               </a> <a href="timeline.html" class="dropdown-item has-icon"> <i class="fas fa-bolt"></i>
                 Activities
               </a> <a href="#" class="dropdown-item has-icon"> <i class="fas fa-cog"></i>
                 Settings
-              </a>
+              </a> --}}
               <div class="dropdown-divider"></div>
               <a wire:click='logout' class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i>
                 Terminar sessão

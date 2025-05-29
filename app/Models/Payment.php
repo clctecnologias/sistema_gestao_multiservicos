@@ -17,7 +17,11 @@ class Payment extends Model
         'payment_method',
         'payment_report_generated_counter',
         'payment_file',
-        'enterprise_service_uuid ',
+        'enterprise_service_uuid',
         'customer_uuid'
     ];
+
+    public function enterprise_service () {
+        return $this->belongsTo(EnterpriseService::class, 'enterprise_service_uuid', 'uuid');
+    }
 }

@@ -7,7 +7,7 @@
                                       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
                                         <div class="card-content">
                                           <h5 class="font-15 text-uppercase">Serviços pagos</h5>
-                                          <h2 class="mb-3 font-18">12</h2>
+                                          <h2 class="mb-3 font-18">{{$paymentCounter ? $paymentCounter : 0}}</h2>
                                         </div>
                                       </div>
                                       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
@@ -30,7 +30,7 @@
                                       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
                                         <div class="card-content">
                                           <h5 class="font-15 text-uppercase">Saldo</h5>
-                                          <h2 class="mb-3 font-18">0%</h2>
+                                          <h2 class="mb-3 font-18">50%</h2>
                                         </div>
                                       </div>
                                       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
