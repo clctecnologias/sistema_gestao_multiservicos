@@ -16,7 +16,7 @@ use Livewire\Component;
 class EmployeeComponent extends Component
 {
     #[Layout('layouts.admin.app')] 
-    public $uuid,$searcher,$startdate,$enddate,$status,$fullname,$position,$users,$phone_number,$salary,$birthday,$address,$employee,$user,$username,$email,$password,$personal_data,$old_password;
+    public $uuid,$searcher,$employee_uuids,$only_employee_role_uuid,$startdate,$enddate,$status,$fullname,$position,$users,$phone_number,$salary,$birthday,$address,$employee,$user,$username,$email,$password,$personal_data,$old_password;
     protected $listeners = ['confirmEmployeeDeletion' => 'confirmEmployeeDeletion'];
     protected $rules = [
         'fullname' => 'required',
@@ -49,6 +49,9 @@ class EmployeeComponent extends Component
             $q->where('role_type', 'employee');
         })->get();
 
+        $this->only_employee_role_uuid = Employee::query()->get();
+        $this->employee_uuids = $this->only_employee_role_uuid->pluck('uuid')->toArray();
+
         } catch (\Throwable $th) {
         LivewireAlert::title('Erro')
             ->text('erro: ' .$th->getMessage())
@@ -70,33 +73,36 @@ class EmployeeComponent extends Component
     public function getEmployees () {
         try {
             if ($this->searcher) {
-                if (isset($this->users) && $this->users->count() > 0) {
-                    foreach ($this->users as $only_employee) {
-                        return PersonalData::query()->where('fullname', 'like', '%' . $this->searcher . '%')
-                        ->with('employee')
+                if (isset($this->only_employee_role_uuid) && $this->only_employee_role_uuid->count() > 0) {
+                    foreach ($this->only_employee_role_uuid as $only_employee) {
+                        return PersonalData::query()->where('fullname', 'like', '%' . $this->searcher . '%')                     
                         ->whereNull('customer_uuid')
-                        ->where('employee_uuid', $only_employee->employee_uuid)
+                       ->where(function($q){
+                            $q->whereIn('employee_uuid', $this->employee_uuids);
+                        })->with('employee')   
                         ->get();
                     }
                 }
 
             }else if ($this->startdate and $this->enddate) { 
-                if (isset($this->users) && $this->users->count() > 0) {               
-                    foreach ($this->users as $only_employee) {
+                if (isset($this->only_employee_role_uuid) && $this->only_employee_role_uuid->count() > 0) {               
+                    foreach ($this->only_employee_role_uuid as $only_employee) {
                         return PersonalData::query()->whereBetween('created_at',[$this->startdate,$this->enddate])
                         ->whereNull('customer_uuid')
-                        ->where('employee_uuid', $only_employee->employee_uuid)
-                        ->with('employee')                
+                        ->where(function($q){
+                            $q->whereIn('employee_uuid', $this->employee_uuids);
+                        })->with('employee')                                        
                         ->get();
                     }
                 }
             }else{
-                if (isset($this->users) && $this->users->count() > 0) {
-                    foreach ($this->users as $only_employee) {
+                if (isset($this->only_employee_role_uuid) && $this->only_employee_role_uuid->count() > 0) {
+                    foreach ($this->only_employee_role_uuid as $only_employee) {
                         return PersonalData::query()->with('employee')
                         ->whereNull('customer_uuid')
-                        ->where('employee_uuid', $only_employee->employee_uuid)
-                        ->get();
+                        ->where(function($q){
+                            $q->whereIn('employee_uuid', $this->employee_uuids);
+                        })->get();     
                     }
                 }
                     
