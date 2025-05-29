@@ -15,7 +15,7 @@ class OnlyAdminAndEmployeeAccess
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->check() && auth()->user()?->role?->role_type === 'employee') {
+        if (auth()->check() && auth()->user()->role->role_type === 'employee') {
         return $next($request);
     }
         return redirect()->route('login');

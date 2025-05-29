@@ -1,5 +1,5 @@
 <div>
-    @section('title', 'Sistema Escolar')
+    @section('title', 'Dashboard | Inicio')
         <livewire:adm.fixed-top-bar />
          <x-side-bar />     
 

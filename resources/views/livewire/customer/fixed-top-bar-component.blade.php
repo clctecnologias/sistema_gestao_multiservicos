@@ -19,8 +19,9 @@
             </li>
           </ul>
         </div>
+
         <ul class="navbar-nav navbar-right">
-          <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
+          <li wire:ignore class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
               class="nav-link nav-link-lg message-toggle"><i data-feather="mail"></i>
               <span class="badge headerBadge1">
                 6 </span> </a>
@@ -31,6 +32,7 @@
                   <a href="#">Mark All As Read</a>
                 </div>
               </div>
+
               <div class="dropdown-list-content dropdown-list-message">
                 <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar
 											text-white"> <img alt="image" src="{{ asset('customer/img/users/user-1.png') }}" class="rounded-circle">
@@ -76,15 +78,17 @@
                   </span>
                 </a>
               </div>
+
               <div class="dropdown-footer text-center">
                 <a href="#">View All <i class="fas fa-chevron-right"></i></a>
               </div>
             </div>
           </li>
-          <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
+
+          <li wire:ignore class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
               class="nav-link notification-toggle nav-link-lg"><i data-feather="bell" class="bell"></i>
             </a>
-            <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
+            <div  class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
               <div class="dropdown-header">
                 Notifications
                 <div class="float-right">
@@ -129,6 +133,7 @@
                 <a href="#">View All <i class="fas fa-chevron-right"></i></a>
               </div>
             </div>
+
           </li>
           <li class="dropdown"><a href="#" data-toggle="dropdown"
               class="nav-link dropdown-toggle nav-link-lg nav-link-user"> <img alt="image" src="{{ asset('customer/img/user.png') }}"

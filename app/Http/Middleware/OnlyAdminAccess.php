@@ -15,7 +15,7 @@ class OnlyAdminAccess
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->check() && auth()->user()?->role->role_type === "admin") {
+        if (auth()->check() && auth()->user()->role->role_type === "admin") {
             return $next($request);
         }
             return redirect()->route('login');       
