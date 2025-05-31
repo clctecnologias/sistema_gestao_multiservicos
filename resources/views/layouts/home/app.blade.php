@@ -16,18 +16,16 @@
     <meta property="og:title" content="Centro Multisserviços - Prestação de Serviços de Instalação e Manutenção Elétrica">
     <meta property="og:description" content="Centro Multisserviços - Prestação de Serviços de Instalação e Manutenção Elétrica na Sapú II e Vila Flor">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
-
-    {{-- Livewire CSS --}}
     @livewireStyles
 </head>
 <body>
 
-    {{ $slot }}
+{{ $slot }}    
+ @livewireScripts
 
-    <script src='{{ asset('global/js/sweetalert.js') }}'></script>
-    <script src="{{ asset('home/js/script.js') }}"></script> 
+<script src='{{ asset('global/js/sweetalert.js') }}'></script>
+<script src="{{ asset('home/js/script.js') }}"></script> 
 
-    {{-- Livewire JS --}}
-    @livewireScripts
+    
 </body>
 </html>

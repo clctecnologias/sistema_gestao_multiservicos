@@ -105,13 +105,13 @@ class AuthComponent extends Component
 
     public function verifyAllAvailableRoles () {
         try {
-            $this->availableRoles = Role::query()->whereIn('role_type', ['customer', 'employee'])->get();
-            if (!$this->availableRoles) {
+            $this->availableRoles = Role::query()->where('role_type', 'employee')
+            ->get();
+            if ($this->availableRoles->count() < 2) {
                 $roleTypes = [1 => 'customer',2 => 'employee'];
-
                 for ($i=1; $i < 3; $i++) {
                     DB::beginTransaction();
-                    Role::query()->create(['role_type' => $roleTypes[$i]]);
+                    Role::query()->create(['role_type' =>$roleTypes[$i]]);
                     DB::commit();
                 }
             }

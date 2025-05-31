@@ -29,7 +29,7 @@
                              <a class="nav-link {{ request()->route()->getname() == 'dashboard.admin.roles' ? 'rounded text-dark bg-white' : ''}} {{ auth()->user()->role->role_type == 'admin' ? 'd-block' : 'd-none' }}" href="{{ route('dashboard.admin.roles') }}">
                                 <div class="sb-nav-link-icon d-flex gap-2 align-items-center {{ request()->route()->getname() == 'dashboard.admin.roles' ? ' text-dark' : '' }}">
                                     <i class="fa fa-solid fa-lock "></i>
-                                    <span>Roles</span> 
+                                    <span>Níveis de acesso</span> 
                                 </div>
                             </a>   
 
