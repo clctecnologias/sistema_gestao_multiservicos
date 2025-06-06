@@ -187,7 +187,7 @@ class EmployeeComponent extends Component
             $this->user->update([
                 'username' =>$this->username ?? '',
                 'email' =>$this->email ?? '',
-                'password' =>$this->password ? $this->password : $this->old_password,
+                'password' =>$this->password ? \Hash::make($this->password) : $this->old_password,
             ]);
 
             $this->employee->update([
