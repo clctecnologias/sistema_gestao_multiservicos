@@ -14,10 +14,11 @@
   <!-- Custom style CSS -->
   <link rel="stylesheet" href="{{ asset('customer/css/custom.css') }}">
   <link rel='shortcut icon' type='image/x-icon' href='' />
+  @livewireStyles  
 </head>
 <body>
-{{ $slot }}   
-
+  {{ $slot }} 
+  @livewireScripts
 <script src='{{ asset('global/js/sweetalert.js') }}'></script> 
 <script src='{{ asset('customer/js/jquery-3.7.1.min.js') }}'></script>
 <script src="{{ asset('customer/js/app.min.js') }}"></script>

@@ -31,7 +31,7 @@
                             <nav class="navBotoes">
                                 <a href="/"><button type="button" class="botao">Cancelar</button></a>
                                 <button
-                                    wire:click='authenticate'
+                                    wire:click="authenticate"
                                     class="botao botaoPrimario">
                                     Iniciar Sessão
                                 </button>

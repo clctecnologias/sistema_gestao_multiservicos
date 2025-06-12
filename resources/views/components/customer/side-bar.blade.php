@@ -12,6 +12,11 @@
               <a href="{{ route('dashboard.customer.payments') }}" class="nav-link">
                 <i data-feather="briefcase"></i><span>Meus pagamentos</span></a>   
             </li>     
+
+              <li class=" {{ Route::current()->getname() == 'dashboard.customer.payments' ? 'active' : '' }}">
+              <a href="{{ route('dashboard.customer.payments') }}" class="nav-link">
+                <i data-feather="briefcase"></i><span>Meu perfil</span></a>   
+            </li>   
  
           </ul>
         </aside>

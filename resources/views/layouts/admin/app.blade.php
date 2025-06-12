@@ -10,12 +10,13 @@
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="{{ asset('dashboard/css/styles.css') }}" rel="stylesheet" />
         <link href='{{ asset('global/css/font-awesome.css') }}' rel="stylesheet" />
-        <link href='{{ asset('dashboard/css/datatables.css') }}' rel="stylesheet" />          
+        <link href='{{ asset('dashboard/css/datatables.css') }}' rel="stylesheet" />
+        @livewireStyles          
     </head>
     <body class="sb-nav-fixed">
-
+        
     {{ $slot }}
-   
+    @livewireScripts
     <script src='{{ asset('global/js/sweetalert.js') }}'></script> 
     <script src="{{ asset('dashboard/js/font-awesome-v6.js') }}" crossorigin="anonymous"></script>
     <script src="{{ asset('dashboard/js/vendor.bundle.base.js') }}" ></script>

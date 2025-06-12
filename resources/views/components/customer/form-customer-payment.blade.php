@@ -1,5 +1,5 @@
 <div>
-            <div  class="modal fade show d-block" style="background-color: rgba(0,0,0,0.5);">
+            <div  class="modal fade show style="background-color: rgba(0,0,0,0.5);">
                 <div class="modal-dialog">
                     <div class="modal-content p-4">
                         <h5 class="modal-title text-uppercase">Registar pagamento</h5>
@@ -32,7 +32,7 @@
                         </div>
 
                         <div class="d-flex justify-content-end ">
-                            <button class="btn btn-dark mx-2 text-uppercase" wire:click="closePaymentModal">Cancelar</button>
+                            <button id='button-close-modal' class="btn btn-dark mx-2 text-uppercase" wire:click="closePaymentModal">Cancelar</button>
                             <button class="btn btn-primary text-uppercase" wire:click="pay_service">Confirmar</button>
                         </div>
                     </div>

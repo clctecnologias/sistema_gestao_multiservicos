@@ -6,9 +6,13 @@
     <title>@yield('title')</title>   
     <link rel="stylesheet" href='{{ asset('auth/css/styles.css') }}' />
     <link rel="stylesheet" href='{{ asset('auth/css/sign_up.css') }}' />  
-</head>
-<body>    
-    {{ $slot }}       
+     @livewireStyles  
+    </head>
+    <body>  
+
+        {{ $slot }}       
+        @livewireScripts
+        
     <script src='{{ asset('global/js/sweetalert.js') }}'></script>      
 </body>
 </html>

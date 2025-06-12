@@ -77,6 +77,10 @@
                     $('#form_customer_payment').modal.('show');
                     $('#form_customer_payment').appendTo('body').modal('show');
                 });
+
+                $("#button-close-modal").click(function () {
+                  $('#form_customer_payment').modal.('hide');
+                });
             });
       </script>
   @endpush
