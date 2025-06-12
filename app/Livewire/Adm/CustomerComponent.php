@@ -3,6 +3,7 @@
 namespace App\Livewire\Adm;
 
 use App\Models\PersonalData;
+use App\Models\User;
 use Livewire\Attributes\Layout;
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 use Livewire\Component;
@@ -59,7 +60,10 @@ class CustomerComponent extends Component
             $this->fullname = $customer->fullname;
             $this->phone_number = $customer->phone_number;
             $this->birthday = $customer->birthday;
-              $this->address = $customer->address;
+            $this->address = $customer->address;
+            $user = User::query()->where('customer_uuid',$customer->customer_uuid)->first();
+            $this->username = $user->username;
+            $this->email = $user->email;
 
 
         } catch (\Throwable $th) {
