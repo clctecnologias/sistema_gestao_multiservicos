@@ -31,7 +31,10 @@
                                     <table class="table table-striped">
                                         <thead>
                                             <tr>    
-                                              <th>Data de cadastro</th>
+                                              <th>Data de pagamento</th>
+                                              <th>Nº do contador</th>
+                                              <th>Quantidade de meses pagos</th>
+                                              <th>Ref da residência</th>
                                               <th>Serviço</th>
                                               <th>Preço</th> 
                                               <th>Opções</th>                                      
@@ -44,11 +47,15 @@
                                                                 <td cass="p-0 text-center">{{$service->created_at}}</td>            
                                                                 <td cass="p-0 text-center">{{$service->enterprise_service->service_name}}</td>
                                                                 <td cass="p-0 text-center">{{$service->enterprise_service->service_price}}</td>   
+                                                                  <td class="p-0 text-center">{{$service->counter_number ?? 'N/D'}}</td>
+                                                                  <td class="p-0 text-center">{{$service->months_quantity ?? 'N/D'}}</td>
+                                                                  <td class="p-0 text-center">{{$service->residence_ref ?? 'N/D'}}</td>
                                                                 <td>
                                                                     <div class='d-flex align-items-center gap-2'>
                                                                         <button wire:click="generatePaymentInvoice({{ $service->id }})" class='btn btn-success'>Gerar factura</button>
                                                                     </div>
                                                                 </td>
+                                                                
                                                             </tr>                                           
                                             @endforeach
                                      @else
