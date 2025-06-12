@@ -34,7 +34,8 @@ class FixedTopBarComponent extends Component
 
       public function logout () {
             try {
-                LivewireAlert::title('Atenção')
+            
+            LivewireAlert::title('Atenção')
             ->text('Deseja realmente, terminar sessão?')
             ->withConfirmButton()
             ->confirmButtonText('Confirmar')

@@ -15,6 +15,24 @@
                             @error('payment_method') <small class="text-danger">{{ $message }}</small> @enderror
                          </div>
 
+                         <div class="mb-3">
+                            <label>Nº do contador</label>
+                            <input type="number" class="form-control" wire:model.defer="counter_number" required />
+                            @error('counter_number') <small class="text-danger">{{ $message }}</small> @enderror
+                        </div>
+
+                         <div class="mb-3">
+                            <label>Quantidade de meses</label>
+                            <input type="number" class="form-control" wire:model.defer="months_quantity" required />
+                            @error('months_quantity') <small class="text-danger">{{ $message }}</small> @enderror
+                        </div>
+
+                         <div class="mb-3">
+                            <label>Ref da residência</label>
+                            <input type="text" class="form-control" wire:model.defer="residence_ref" required />
+                            @error('residence_ref') <small class="text-danger">{{ $message }}</small> @enderror
+                        </div>
+
                         <div class="mb-3">
                             <label>Selecionar serviço</label>
                             <select wire:change='choose_service_topay' class="form-control" wire:model.defer="service_type" required>

@@ -46,7 +46,7 @@
                                                                 <td cass="p-0 text-center">{{$service->enterprise_service->service_price}}</td>   
                                                                 <td>
                                                                     <div class='d-flex align-items-center gap-2'>
-                                                                        <button wire:click="generateInvoice({{ $service->id }})" class='btn btn-success'>Gerar factura</button>
+                                                                        <button wire:click="generatePaymentInvoice({{ $service->id }})" class='btn btn-success'>Gerar factura</button>
                                                                     </div>
                                                                 </td>
                                                             </tr>                                           

@@ -18,6 +18,9 @@ class Payment extends Model
         'payment_report_generated_counter',
         'payment_file',
         'enterprise_service_uuid',
+        'counter_number',
+        'months_quantity',
+        'residence_ref',
         'customer_uuid'
     ];
 
