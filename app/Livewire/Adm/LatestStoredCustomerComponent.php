@@ -4,6 +4,7 @@ namespace App\Livewire\Adm;
 
 use App\Models\{Customer, PersonalData, User};
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 use Livewire\Component;
 
@@ -174,7 +175,7 @@ class LatestStoredCustomerComponent extends Component
             $this->user->update([
                 'username' =>$this->username ?? '',
                 'email' =>$this->email ?? '',
-                'password' =>$this->password ? $this->password : $this->old_password,
+                'password' =>$this->password ? Hash::make($this->password) : $this->old_password,
             ]);
 
       
