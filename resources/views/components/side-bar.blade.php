@@ -19,8 +19,8 @@
                                 </div>
                             </a> 
 
-                              <a class="nav-link {{ auth()->user()->role->role_type == 'admin' ? 'd-block' : 'd-none' }} {{ request()->route()->getname() == 'dashboard.admin.employees' ? 'rounded text-dark bg-white' : '' }}" href="{{ route('dashboard.admin.employees') }}">
-                                <div class="sb-nav-link-icon d-flex gap-2 align-items-center {{ request()->route()->getname() == 'dashboard.admin.employees' ? 'text-dark' : 'text-light' }}">
+                              <a class="nav-link {{ auth()->user()->role->role_type == 'admin' ? 'd-block' : 'd-none' }} {{ request()->route()->getname() == 'dashboard.admin.customers' ? 'rounded text-dark bg-white' : '' }}" href="{{ route('dashboard.admin.customers') }}">
+                                <div class="sb-nav-link-icon d-flex gap-2 align-items-center {{ request()->route()->getname() == 'dashboard.admin.customers' ? 'text-dark' : 'text-light' }}">
                                     <i class="fa fa-solid fa-user "></i>
                                     <span>Clientes</span>
                                 </div>

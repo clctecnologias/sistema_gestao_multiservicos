@@ -2,6 +2,7 @@
 
 use App\Http\Middleware\OnlyAdminAccess;
 use App\Http\Middleware\OnlyAdminAndEmployeeAccess;
+use App\Livewire\Adm\CustomerComponent;
 use App\Livewire\Adm\CustomerPaymentComponent;
 use App\Livewire\Adm\DashboardComponent;
 use App\Livewire\Adm\EmployeeComponent;
@@ -19,6 +20,7 @@ Route::get('/pagamento/clientes', CustomerPaymentComponent::class)->name('dashbo
 Route::middleware(OnlyAdminAccess::class)->group(function() {
 Route::get('/roles', RoleComponent::class)->name('dashboard.admin.roles');
 Route::get('/dados/empresa/', EnterpriseComponent::class)->name('dashboard.admin.enterprise');
+Route::get("/clientes", CustomerComponent::class)->name("dashboard.admin.customers");
 });
 
 });
