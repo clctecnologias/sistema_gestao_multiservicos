@@ -8,14 +8,15 @@
             <li class="rounded  {{ Route::current()->getname() == 'dashboard.customer.home' ? 'active' : '' }}">
               <a href="{{ route('dashboard.customer.home') }}" class="nav-link "><i data-feather="monitor"></i><span>Dashboard</span></a>
             </li>
+
             <li class=" {{ Route::current()->getname() == 'dashboard.customer.payments' ? 'active' : '' }}">
               <a href="{{ route('dashboard.customer.payments') }}" class="nav-link">
                 <i data-feather="briefcase"></i><span>Meus pagamentos</span></a>   
             </li>     
 
-              <li class=" {{ Route::current()->getname() == 'dashboard.customer.payments' ? 'active' : '' }}">
-              <a href="{{ route('dashboard.customer.payments') }}" class="nav-link">
-                <i data-feather="briefcase"></i><span>Meu perfil</span></a>   
+              <li class=" {{ Route::current()->getname() == 'dashboard.customer.profile' ? 'active' : '' }}">
+              <a href="{{ route('dashboard.customer.profile') }}" class="nav-link">
+                <i data-feather="user"></i><span>Meu perfil</span></a>   
             </li>   
  
           </ul>

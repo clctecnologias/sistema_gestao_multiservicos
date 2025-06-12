@@ -6,8 +6,8 @@
             <livewire:customer.fixed-top-bar-component />
             <x-customer.side-bar />    
                   <div class="main-content">
-                    <section class="section">            
-                           
+                     @include('components.customer.form-customer-payment')
+                    <section class="section">     
                     
                       <div class="row">
                          <div class="col-12">
@@ -18,11 +18,13 @@
                                   
                                 <div class="card-body p-0">
                                     <div class='d-flex align-items-center gap-1 my-2 mb-2 mx-2'>
-                                        <button 
+                                        
+                                      <button 
                                         wire:click="setModalVisible"
                                         {{-- wire:click='addPaymentService' --}}
                                         class='btn btn-primary'>Adicionar
-                                        </button>
+                                      </button>
+
                                     </div>
 
                                   <div class="table-responsive">
@@ -58,14 +60,11 @@
                       
                     </section>
                   
+                    <x-customer.footer />
                   </div>
-          <x-customer.footer />
      </div>
-
-     <!-- Modal (Alpine + Blade) -->
-      @if ($showModal)
-        @include('components.customer.form-customer-payment')
-    @endif
+    
+      
 
 
   </div>

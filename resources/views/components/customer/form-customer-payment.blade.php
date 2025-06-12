@@ -1,5 +1,6 @@
-<div>
-            <div  class="modal fade show style="background-color: rgba(0,0,0,0.5);">
+
+    <div  class="modal fade {{ $showModal ? 'd-block' : 'd-none' }}  show" style="background-color: rgba(0,0,0,0.5);">
+              
                 <div class="modal-dialog">
                     <div class="modal-content p-4">
                         <h5 class="modal-title text-uppercase">Registar pagamento</h5>
@@ -12,7 +13,7 @@
                                 <option value="Pagamento a cash">Pagamento a cash</option>
                             </select>
                             @error('payment_method') <small class="text-danger">{{ $message }}</small> @enderror
-                        </div>
+                         </div>
 
                         <div class="mb-3">
                             <label>Selecionar serviço</label>
@@ -35,7 +36,8 @@
                             <button id='button-close-modal' class="btn btn-dark mx-2 text-uppercase" wire:click="closePaymentModal">Cancelar</button>
                             <button class="btn btn-primary text-uppercase" wire:click="pay_service">Confirmar</button>
                         </div>
+
                     </div>
                 </div>
-            </div>
-        </div>
+           
+</div>
