@@ -16,7 +16,7 @@
 
                                     <div class='col-md-6 d-flex align-items-center gap-1'>
                                         <button  data-bs-target='#form-customer' data-bs-toggle='modal' class='btn btn-primary {{ auth()->user()->role->role_type === 'admin' ? 'd-block' : 'd-none' }}'>Adicionar</button>
-                                       <input wire:model.live='searcher' class='form-control' type='text' placeholder='Pesquisar funcionário' />
+                                       <input wire:model.live='searcher' class='form-control' type='text' placeholder='Pesquisar cliente' />
                                     </div>                                   
 
                                     <div class='col-md-md-5 d-flex align-items-center gap-1'>
@@ -31,9 +31,7 @@
                                         <thead>
                                             <tr>
                                                 <th>Nome</th>
-                                                <th>Data de nascimento</th>
-                                                <th>Cargo</th>
-                                                <th>Salário</th>
+                                                <th>Data de nascimento</th>                                                                                         
                                                 <th>Número de telefone</th>
                                                 <th>Endereço</th>
                                                 <th>Opções</th>
@@ -41,19 +39,17 @@
                                         </thead>
 
                                         <tbody>
-                                            @if (isset($employees) and $employees->count() > 0)
-                                                @foreach ($employees as $employee)
+                                            @if (isset($customers) and $customers->count() > 0)
+                                                @foreach ($customers as $customer)
                                                             <tr>  
-                                                                <td>{{$employee->fullname ?? ''}}</td>     
-                                                                <td>{{$employee->birthday ?? ''}}</td>    
-                                                                 <td>{{$employee->employee->position ?? ''}}</td>       
-                                                                <td>{{$employee->employee->salary ?? '0,00'}}Kz</td>    
-                                                                 <td>{{$employee->phone_number ?? ''}}</td>   
-                                                                 <td>{{$employee->address ?? ''}}</td>    
+                                                                <td>{{$customer->fullname ?? ''}}</td>     
+                                                                <td>{{$customer->birthday ?? ''}}</td>    
+                                                                 <td>{{$customer->phone_number ?? ''}}</td>   
+                                                                 <td>{{$customer->address ?? ''}}</td>    
                                                                  <td>
                                                                     <div class='d-flex gap-1 align-items-center'>
                                                                         <button 
-                                                                            wire:click="edit('{{ $employee->uuid }}')"
+                                                                            wire:click="edit('{{ $customer->uuid }}')"
                                                                             data-bs-target='#form-customer' 
                                                                             data-bs-toggle='modal'
                                                                             class='btn btn-primary btn-sm'>
@@ -61,7 +57,7 @@
                                                                         </button>
 
                                                                         <button 
-                                                                            wire:click="delete('{{ $employee->uuid }}')"
+                                                                            wire:click="delete('{{ $customer->uuid }}')"
                                                                             class='btn btn-danger btn-sm'>
                                                                             <i class='fa fa-trash-alt'></i>
                                                                        </button>
