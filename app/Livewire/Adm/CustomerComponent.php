@@ -9,7 +9,7 @@ use Livewire\Component;
 
 class CustomerComponent extends Component
 {
-    public $status,$searcher,$startdate,$enddate;
+    public $customer_uuid,$fullname,$phone_number,$birthday,$address,$username,$email,$password,$status,$searcher,$startdate,$enddate;
     
     #[Layout('layouts.admin.app')] 
     public function render()
@@ -52,9 +52,29 @@ class CustomerComponent extends Component
         }
     }
 
+    public function edit ($uuid) {
+        try {           
+            $this->customer_uuid = $uuid;
+            $customer = PersonalData::query()->find($this->customer_uuid);           
+            $this->fullname = $customer->fullname;
+            $this->phone_number = $customer->phone_number;
+            $this->birthday = $customer->birthday;
+              $this->address = $customer->address;
+
+
+        } catch (\Throwable $th) {
+             LivewireAlert::title('Erro')
+            ->text('erro: ' .$th->getMessage())
+            ->error()
+            ->withConfirmButton()
+            ->confirmButtonText('Fechar')
+            ->show();
+        }
+    }
+
     public function close_modal () {
         try {
-            //code...
+            
         } catch (\Throwable $th) {
           LivewireAlert::title('Erro')
             ->text('erro: ' .$th->getMessage())

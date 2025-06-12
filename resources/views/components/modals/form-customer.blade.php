@@ -15,12 +15,7 @@
                         <input type='text' class='form-control' wire:model='fullname' />
                         @error('fullname')<span class='text-danger'>{{$message}}</span>@enderror
                     </div>
-
-                    <div class='form-group {{ isset($hideInput) ? 'd-none' : '' }}'>
-                        <label>Cargo:</label>
-                        <input type='text' class='form-control' wire:model='position' />
-                          @error('position')<span class='text-danger'>{{$message}}</span>@enderror
-                    </div>
+                   
 
                       <div class='form-group'>
                         <label>Número de telefone:</label>
@@ -31,12 +26,9 @@
                 </div>
 
                 <div class='col-md-6'>
-                     <div class='form-group {{ isset($hideInput) ? 'd-none' : '' }}'>
-                        <label>Salário:</label>
-                        <input  type='number' class='form-control' wire:model='salary' />
-                          @error('salary')<span class='text-danger'>{{$message}}</span>@enderror
-                    </div>
-                       <div class='form-group'>
+                   
+
+                    <div class='form-group'>
                         <label>Data de nascimento:</label>
                         <input type='date' class='form-control' wire:model='birthday' />
                           @error('birthday')<span class='text-danger'>{{$message}}</span>@enderror
@@ -47,6 +39,7 @@
                         <input type='text' class='form-control' wire:model='address' />
                           @error('address')<span class='text-danger'>{{$message}}</span>@enderror
                     </div>
+
                 </div>
             </div>
             <hr>
