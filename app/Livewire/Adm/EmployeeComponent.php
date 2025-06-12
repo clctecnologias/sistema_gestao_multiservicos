@@ -202,7 +202,8 @@ class EmployeeComponent extends Component
             ->withConfirmButton()
             ->confirmButtonText('Fechar')
             ->show();
-
+            
+            $this->reset(['password']);
             }
         
            

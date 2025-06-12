@@ -188,6 +188,8 @@ class LatestStoredCustomerComponent extends Component
             ->confirmButtonText('Fechar')
             ->show();
 
+            $this->reset(['password']);
+
             }
         
            
