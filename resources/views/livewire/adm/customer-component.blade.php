@@ -48,6 +48,7 @@
                                                                  <td>{{$customer->address ?? ''}}</td>    
                                                                  <td>
                                                                     <div class='d-flex gap-1 align-items-center'>
+                                                                       
                                                                         <button 
                                                                             wire:click="edit('{{ $customer->uuid }}')"
                                                                             data-bs-target='#form-customer' 
@@ -61,6 +62,7 @@
                                                                             class='btn btn-danger btn-sm'>
                                                                             <i class='fa fa-trash-alt'></i>
                                                                        </button>
+                                                                       
                                                                     </div>
                                                                 </td>   
                                                             </tr>                                                    

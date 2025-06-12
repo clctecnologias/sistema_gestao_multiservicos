@@ -2,11 +2,11 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header border-0">
-        <h1 class="modal-title fs-6 text-muted text-uppercase" id="staticBackdropLabel">{{ $status ? 'Editar dados do' : 'Adicionar' }} registo</h1>
+        <h1 class="modal-title fs-6 text-muted text-uppercase" id="staticBackdropLabel">{{ $status ? 'Editar dados do' : 'Adicionar' }} cliente</h1>
         <button wire:click='close_modal' type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form >
+        <form wire:submit="{{ $status ? 'update' : 'save' }}" >
             <div class='col-md-12 gap-1 d-flex align-items-start'>
                 <div class='col-md-6'>
 
@@ -68,7 +68,7 @@
                 </div>
             </div>
 
-        </form>
+       
       </div>
       <div class="modal-footer">
         <button 
@@ -78,13 +78,13 @@
            Fechar
         </button>
 
-        <button 
-            wire:click="{{ $status ? 'update' : 'save' }}"         
+        <button             
             class="btn text-uppercase {{$status ? 'btn-success' : 'btn-primary'}} ">
             {{$status ? 'Atualizar' : 'Salvar'}} 
         </button>
+    </div>
+     </form>
 
-      </div>
     </div>
   </div>
 </div>
