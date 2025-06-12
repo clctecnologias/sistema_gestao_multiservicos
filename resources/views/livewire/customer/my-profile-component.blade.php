@@ -22,7 +22,7 @@
                                         <div class='col-md-6'>
                                             <div>
                                                 <label for="name">Nome</label>
-                                                <input type="text" id="name" class="form-control" placeholder="Nome" wire:model.defer="name">   
+                                                <input type="text" id="name" class="form-control" placeholder="Nome" wire:model.defer="fullname">   
                                             </div>
 
                                             <div>
@@ -46,6 +46,11 @@
                                             <div>
                                                 <label for="email">Email</label>
                                                 <input type="email" id="email" class="form-control" placeholder="Email" wire:model.defer="email">   
+                                            </div>
+
+                                              <div>
+                                                <label for="password">Senha</label>
+                                                <input type="password" id="password" class="form-control" placeholder="Senha" wire:model.defer="password" />   
                                             </div>
 
                                         </div>                                    
