@@ -52,7 +52,7 @@
                                                                   <td class="p-0 text-center">{{$service->residence_ref ?? 'N/D'}}</td>
                                                                 <td>
                                                                     <div class='d-flex align-items-center gap-2'>
-                                                                        <button wire:click="generatePaymentInvoice({{ $service->id }})" class='btn btn-success'>Gerar factura</button>
+                                                                        <button wire:click="generatePaymentInvoice('{{ $service->id }}')" class='btn btn-success'>Gerar factura</button>
                                                                     </div>
                                                                 </td>
                                                                 
@@ -84,15 +84,24 @@
 
   @push('customer-dashboard-payment-service')
       <script>
-            $(document).ready(() => {
-                $('#addPaymentButton').click( () => {
-                    $('#form_customer_payment').modal.('show');
+
+        window.addEventListener("printPdf", event => {
+            window.open(event.detail.url, '_blank');
+          // window.location = {{ route('dashboard.customer.payments.invoice') }}
+          });         
+          
+          $(document).ready(() => {
+                $('#addPaymentButton').click(() => {
                     $('#form_customer_payment').appendTo('body').modal('show');
                 });
 
                 $("#button-close-modal").click(function () {
-                  $('#form_customer_payment').modal.('hide');
+                    $('#form_customer_payment').modal('hide');
                 });
             });
+
+
       </script>
+
+     
   @endpush

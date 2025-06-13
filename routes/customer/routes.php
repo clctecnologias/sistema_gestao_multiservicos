@@ -12,7 +12,7 @@ Route::get('/inicio', CustomerComponent::class)->name('dashboard.customer.home')
 Route::get('meus/pagamentos',CustomerPaymentCompomnt::class)->name('dashboard.customer.payments');
 Route::get('/meu/perfil', MyProfileComponent::class)->name('dashboard.customer.profile');
 Route::controller(PaymentInvoiceController::class)->group(function() {
-Route::get('/pagamento/{payment}/factura', 'generateInvoice')->name('dashboard.customer.payments.invoice');
+Route::get('/pagamento/factura/', 'generateInvoice')->name('dashboard.customer.payments.invoice');
 });
 
 });

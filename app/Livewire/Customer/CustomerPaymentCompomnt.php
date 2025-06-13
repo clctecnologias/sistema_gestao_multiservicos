@@ -4,6 +4,7 @@ namespace App\Livewire\Customer;
 
 use App\Models\EnterpriseService;
 use App\Models\Payment;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Layout;
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
@@ -13,7 +14,7 @@ class CustomerPaymentCompomnt extends Component
 {
     #[Layout('layouts.customer.app')] 
    
-    public $counter_number,$months_quantity,$residence_ref,$enterprise_service_uuid,$payment_tb,$payment_method,$showModal,$service_type,$service_price,$service,$available_company_services,$enterprise_service_tb,$status;
+    public $counter_number,$payment_uuid,$months_quantity,$residence_ref,$enterprise_service_uuid,$payment_tb,$payment_method,$showModal,$service_type,$service_price,$service,$available_company_services,$enterprise_service_tb,$status;
     protected $rules = [
     'service_type' => 'required',
     'payment_method' => 'required',
@@ -164,8 +165,10 @@ class CustomerPaymentCompomnt extends Component
             }
         }
 
-     public function generatePaymentInvoice () {
+     public function generatePaymentInvoice ($uuid) {
         try {
+            $this->payment_uuid = $uuid;
+
            LivewireAlert::title('Atenção')
             ->text('Deseja gerar, a sua factura de pagamento?')
             ->withConfirmButton()
@@ -191,4 +194,23 @@ class CustomerPaymentCompomnt extends Component
     }   
         
 
+    public function confirmGeneratePaymentInvoice () { 
+        try {
+              //$data = [];
+              //$pdf = Pdf::loadView('pdf.invoice')->setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true]);
+             // return $pdf->download('invoice.pdf');
+            
+              $this->dispatch('printPdf', [
+              'url' => route('dashboard.customer.payments.invoice') ]);
+            
+        } catch (\Throwable $th) {
+           LivewireAlert::title('Erro')
+                ->text('erro: ' .$th->getMessage())
+                ->error()
+                ->withConfirmButton()
+                ->timer(0)
+                ->confirmButtonText('Fechar')
+                ->show();
+        }
+    }
 }
